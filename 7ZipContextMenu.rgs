@@ -1,0 +1,52 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {FF770C85-53FE-4CCB-B5A9-D4B0511C6B4F} = s '7ZipFM Shell Extension'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			shellex
+            { 
+                 DropHandler = s '{FF770C85-53FE-4CCB-B5A9-D4B0511C6B4F}'
+            } 
+
+		}
+	}
+	NoRemove *
+    {
+        NoRemove ShellEx
+        {
+            NoRemove ContextMenuHandlers
+            {
+                ForceRemove 7ZipFM = s '{FF770C85-53FE-4CCB-B5A9-D4B0511C6B4F}'
+            }
+			
+        }
+    }
+
+
+	NoRemove Directory
+    {
+        NoRemove shellex
+        {
+            NoRemove ContextMenuHandlers
+            {
+                ForceRemove 7ZipFM = s '{FF770C85-53FE-4CCB-B5A9-D4B0511C6B4F}'
+            }
+        }
+    }
+    NoRemove Folder
+    {
+        NoRemove shellex
+        {
+            NoRemove ContextMenuHandlers
+            {
+                ForceRemove 7ZipFM = s '{FF770C85-53FE-4CCB-B5A9-D4B0511C6B4F}'
+            }
+        }
+    }
+
+}

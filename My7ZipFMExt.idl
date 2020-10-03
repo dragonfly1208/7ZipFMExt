@@ -1,0 +1,58 @@
+// My7ZipFMExt.idl : 7ZipFMExt的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(My7ZipFMExt.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(a817e7a2-43fa-11d0-9e44-00aa00b6770a),
+	dual,	
+	pointer_default(unique)
+]
+interface IComponentRegistrar : IDispatch
+{
+	[id(1)]	HRESULT Attach([in] BSTR bstrPath);
+	[id(2)]	HRESULT RegisterAll();
+	[id(3)]	HRESULT UnregisterAll();
+	[id(4)]	HRESULT GetComponents([out] SAFEARRAY(BSTR)* pbstrCLSIDs, [out] SAFEARRAY(BSTR)* pbstrDescriptions);
+	[id(5)]	HRESULT RegisterComponent([in] BSTR bstrCLSID);
+	[id(6)] HRESULT UnregisterComponent([in] BSTR bstrCLSID);
+};
+
+[
+	object,
+	uuid(03808EFA-E0F9-4C65-9F25-CAA58DF17858),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IZipContextMenu : IDispatch{
+};
+[
+	uuid(E3489523-B73C-4150-A442-BBEE71B69009),
+	version(1.0),
+	custom(a817e7a1-43fa-11d0-9e44-00aa00b6770a,"{E4FF5F3C-2C96-475F-86F8-25CF40F92504}")
+]
+library My7ZipFMExtLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(E4FF5F3C-2C96-475F-86F8-25CF40F92504)		
+	]
+	coclass CompReg
+	{
+		[default] interface IComponentRegistrar;
+	};
+	[
+		uuid(FF770C85-53FE-4CCB-B5A9-D4B0511C6B4F)		
+	]
+	coclass ZipContextMenu
+	{
+		[default] interface IZipContextMenu;
+	};
+};
+

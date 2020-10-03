@@ -1,0 +1,9 @@
+; 7ZipFMExt.def :  Declares the module parameters.
+
+LIBRARY      "7ZipFMExt.DLL"
+
+EXPORTS
+    DllCanUnloadNow     PRIVATE
+    DllGetClassObject   PRIVATE
+    DllRegisterServer   PRIVATE
+    DllUnregisterServer	PRIVATE
